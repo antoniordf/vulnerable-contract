@@ -14,7 +14,7 @@ contract Fundraiser {
     uint withdrawAmount = balances[msg.sender];
     Wallet wallet = Wallet(msg.sender);
     wallet.payout.value(withdrawAmount)(); // In this line, the "payout" function in an external contract. We don't really know what the payout function in that contract is designed to do.
-    balances[msg.sender] = 0;
+    balances[msg.sender] = 0; // All you need to do to fix this contract is move this line of code to line 15.
   }
 
   // Within the "payout" function in the wallet contract, an attacker could recursively call the withdrawCoins() function again, preventing the withdrawCoins
